@@ -40,7 +40,7 @@ def load_artifacts():
     encoders = jb.load("encoders.joblib")            # dict des LabelEncoder par colonne
     scaler = jb.load("scaler.joblib")                 # normaliseur
     xgb = jb.load("xgb_model.joblib")                 # modèle
-    return encoders, target_encoder, scaler, xgb
+    return encoders, scaler, xgb
 
 
 encoders, scaler, xgb = load_artifacts()
