@@ -38,16 +38,14 @@ COLONNES_CATEGORIELLES = [
 @st.cache_resource
 def load_artifacts():
     encoders = jb.load("encoders.joblib")            # dict des LabelEncoder par colonne
-    target_encoder = jb.load("target_encoder.joblib")  # LabelEncoder de la cible y
     scaler = jb.load("scaler.joblib")                 # normaliseur
     xgb = jb.load("xgb_model.joblib")                 # modèle
     return encoders, target_encoder, scaler, xgb
 
 
-encoders, target_encoder, scaler, xgb = load_artifacts()
+encoders, scaler, xgb = load_artifacts()
 
-# Reconstruire les libellés de la cible dans l'ordre des classes encodées (ex. [0, 1] -> ['no', 'yes'])
-class_names = list(target_encoder.classes_)
+class_names = ['no', 'yes']
 
 
 # Fonction de prédiction simple
